@@ -19,7 +19,7 @@ lazy val Guava = "com.google.guava" % "guava" % "23.0"
 lazy val Scalatest = "org.scalatest" %% "scalatest" % "3.1.0"
 
 lazy val commonSettings = Def.settings(
-  scalaVersion := "2.12.10",
+  scalaVersion := "2.13.1",
   scalacOptions ++= Seq(
     "-deprecation",
     "-encoding",
@@ -28,9 +28,7 @@ lazy val commonSettings = Def.settings(
     "-feature",
     "-Xcheckinit",
     "-Xfatal-warnings",
-    "-Xfuture",
     "-Xlint:adapted-args",
-    "-Xlint:by-name-right-associative",
     "-Xlint:constant",
     "-Xlint:delayedinit-select",
     "-Xlint:doc-detached",
@@ -44,9 +42,7 @@ lazy val commonSettings = Def.settings(
     "-Xlint:poly-implicit-overload",
     "-Xlint:private-shadow",
     "-Xlint:stars-align",
-    "-Xlint:type-parameter-shadow",
-    "-Xlint:unsound-match",
-    "-Yno-adapted-args"
+    "-Xlint:type-parameter-shadow"
   )
 )
 

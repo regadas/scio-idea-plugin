@@ -125,7 +125,7 @@ trait AnnotationTypeInjector extends SyntheticMembersInjector {
   private[this] val classMissed =
     mutable.HashMap.empty[String, Int].withDefaultValue(0)
 
-  protected def generatedCaseClasses(source: String, c: ScClass) = {
+  protected def generatedCaseClasses(source: String, c: ScClass): Seq[String] = {
     // For some reason sometimes [[getVirtualFile]] returns null, use Option. I don't know why.
     val fileName =
       Option(c.asInstanceOf[PsiElement].getContainingFile.getVirtualFile)
@@ -139,11 +139,12 @@ trait AnnotationTypeInjector extends SyntheticMembersInjector {
     } yield cf
 
     file.fold(Seq.empty[String]) { f =>
-      import collection.JavaConverters._
+      import scala.jdk.CollectionConverters._
       Files
         .readLines(f, Charset.defaultCharset())
         .asScala
         .filter(_.contains("case class"))
+        .toSeq
     }
   }
 
